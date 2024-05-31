@@ -1,4 +1,5 @@
 import App from "@/pages/home/App";
+import ProjectListCard from "@/pages/projects";
 
 export const route = [
   {
@@ -8,5 +9,15 @@ export const route = [
   {
     path: "/about",
     element: <App />,
+  },
+  {
+    path: "/projects",
+    element: <ProjectListCard />,
+    children: [
+      {
+        path: ":slug",
+        element: <App />,
+      },
+    ],
   },
 ];
