@@ -1,8 +1,9 @@
 import RootLayout from "@/layouts/RootLayout";
 import { Alert, AlertDescription, AlertTitle } from "../../components/ui/alert";
 import { Terminal } from "lucide-react";
+import { Outlet } from "react-router-dom";
 
-function App() {
+export default function App() {
   return (
     <RootLayout>
       <Alert>
@@ -12,8 +13,7 @@ function App() {
           You can add components and dependencies to your app using the cli.
         </AlertDescription>
       </Alert>
+      <Outlet />
     </RootLayout>
   );
 }
-
-export default App;

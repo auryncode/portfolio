@@ -9,9 +9,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "./ui/tooltip";
-import { links } from "@/lib/links";
-
-
+import { links } from "@/data/links";
 export default function Navbar() {
   const { setTheme } = useTheme();
   const [show, setShow] = useState(false);
@@ -23,8 +21,8 @@ export default function Navbar() {
             onClick={() => setShow(!show)}
             className="cursor-pointer sm:hidden"
           />
-          <h1 className="hidden sm:block">Navbar</h1>
-          <div className="hidden sm:flex space-x-4">
+          <img className="h-8 fill-white" src={"/images/logo.png"} alt="" />
+          <div className="hidden sm:flex gap-8">
             {links.map((link, i) => (
               <Link key={i} to={link.href} className="capitalize font-medium">
                 {link.label}
