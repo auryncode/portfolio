@@ -7,31 +7,38 @@ import {
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { skills } from "@/data/skils";
-import RootLayout from "@/layouts/RootLayout";
+import { sosmed } from "@/data/sosmed";
 import { ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function About() {
   return (
-    <RootLayout>
+    <>
       <h1 className="text-3xl font-semibold">About Me</h1>
-      <p className="text-sm font-medium mb-3">
-        A little about myself.
-      </p>
+      <p className="text-sm font-medium mb-3">A little about myself.</p>
       <div className="flex flex-col gap-4">
-        <p className="text-sm font-medium">
-          Greetings! I am <span className="font-semibold">Heri Riyanto</span>,
-          commonly known as <span className="font-semibold">Heri</span>. I hail
-          from Karanganyar and currently live in Banjarsari, Surakarta,
-          Indonesia. I completed my education at SMKN 2 Karanganyar in 2024,
-          specializing in Software Engineering.
+        <p className="indent-8">
+          Hi, I’m <strong>Heri Riyanto</strong>, a programmer at Phicos Group
+          since 2024. My expertise lies in developing applications using PHP
+          (Laravel and CodeIgniter) and working with databases. Additionally, I
+          am skilled in JavaScript and React.js, which I aim to highlight as
+          part of my future career growth. I am a calm and focused individual
+          when it comes to work, with a strong command of JavaScript. What sets
+          me apart is my ability to understand user needs and translate them
+          into effective technical solutions. I believe that results are
+          everything, but the process to achieve those results is equally
+          important.
         </p>
-        <p className="text-sm font-medium">
-          My foray into web development began in 2021 with Python and PHP, both
-          of which I learned during my time at school. Currently, my focus has
-          shifted towards mastering JavaScript, React, and their associated
-          technologies. Additionally, I am expanding my knowledge in areas like
-          accessibility, testing, CI/CD, among others.
+        <p className="indent-8">
+          Outside of work, I enjoy motorbike rides without a specific
+          destination. This hobby gives me the time to reflect and spark new
+          ideas. With a passion for solving complex problems and making
+          technology more useful, I continuously learn and adapt to the latest
+          advancements to deliver the best solutions.
+        </p>
+        <p>
+          Whether you’re a recruiter, a potential client, or just curious, feel
+          free to reach out to me.
         </p>
       </div>
       <h1 className="text-3xl font-semibold my-5">Skills</h1>
@@ -40,7 +47,7 @@ export default function About() {
           <Card key={index}>
             <CardHeader>
               <CardTitle>{skill.title}</CardTitle>
-              <CardDescription>{skill.description}</CardDescription>
+              {/* <CardDescription>{skill.description}</CardDescription> */}
               <Separator />
             </CardHeader>
             <CardContent>
@@ -57,23 +64,27 @@ export default function About() {
       <p className="text-sm mb-3">
         You can react me out via email at{" "}
         <Link
-          to="mailto:auryncode@gmail.com"
+          target="_blank"
+          to="mailto:heri.riyanto.official@gmail.com"
           className="underline underline-offset-2 hover:text-blue-600"
         >
-          auryncode@gmail.com
+          heri.riyanto.official@gmail.com
         </Link>{" "}
         or via socials below:
       </p>
       <ul className="list-disc list-inside">
-        <li>
-          <Link to={"https://www.instagram.com/heri.riynt"} className="inline-flex items-center gap-[2px] hover:underline underline-offset-2 hover:text-blue-600 transition-colors duration-200 ease-in">Instagram <ExternalLink size={14} /></Link>
-          
-        </li>
-        <li>
-          <Link to={"https://www.instagram.com/heri.riynt"} className="inline-flex items-center gap-1 hover:underline underline-offset-2 hover:text-blue-600 transition-colors duration-200 ease-in">Instagram <ExternalLink size={14} /></Link>
-          
-        </li>
+        {sosmed.map((item, i) => (
+          <li key={i}>
+            <Link
+              target="_blank"
+              to={item.link}
+              className="inline-flex items-center gap-[2px] hover:underline underline-offset-2 hover:text-blue-600 transition-colors duration-200 ease-in"
+            >
+              {item.name} <ExternalLink size={14} />
+            </Link>
+          </li>
+        ))}
       </ul>
-    </RootLayout>
+    </>
   );
 }

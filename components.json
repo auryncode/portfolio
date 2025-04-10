@@ -12,6 +12,13 @@
   },
   "aliases": {
     "components": "@/components",
-    "utils": "@/lib/utils"
+    "utils": "@/lib/utils",
+    "layouts": "@/layouts",
+    "pages": "@/pages",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks",
+    "routes": "@/routes",
+    "assets": "@/assets"
   }
 }

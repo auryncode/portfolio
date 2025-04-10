@@ -1,17 +1,17 @@
 export const skills = [
   {
-    title: "language",
+    title: "Programming Language",
     description: "Description 1",
-    contents: ["html & css", "react", "vite"],
+    contents: ["JavaScript", "php", "python"],
   },
   {
     title: "Frontend",
     description: "Description 2",
-    contents: ["html & css", "react", "vite"],
+    contents: ["html & css", "react", "tailwinds css", 'bootstrap'],
   },
   {
     title: "Backend",
     description: "Description 3",
-    contents: ["html & css", "react", "vite"],
+    contents: ["node js", "laravel", "codeigniter", 'flask'],
   },
 ];

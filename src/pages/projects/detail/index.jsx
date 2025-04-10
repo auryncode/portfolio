@@ -1,12 +1,18 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import RootLayout from "@/layouts/RootLayout";
+import { Skeleton } from "@/components/ui/skeleton";
+import { getProjects } from "@/data/projects";
 import { CodeXml, ExternalLink } from "lucide-react";
-import { Link, useLoaderData } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
 export default function DetailProject() {
-  const data = useLoaderData();
-  return (
-    <RootLayout>
+  const { slug } = useParams();
+  const [data, setData] = useState();
+  useEffect(() => {
+    getProjects(slug).then((res) => setData(res));
+  }, [slug]);
+  return data ? (
+    <>
       <AspectRatio
         ratio={19 / 9}
         className="bg-transparent relative overflow-hidden"
@@ -21,23 +27,36 @@ export default function DetailProject() {
       <p>{data.description}</p>
       <div className="flex gap-4 my-4">
         <Link
-        target="_blank"
+          target="_blank"
           to={data.sourceCode}
-          className={`flex gap-1 ${!data.sourceCode && 'hidden'} items-center underline hover:text-blue-600 hover:italic`}
+          className={`flex gap-1 ${
+            !data.sourceCode && "hidden"
+          } items-center underline hover:text-blue-600 hover:italic`}
         >
           <CodeXml size={16} />
           Source code
         </Link>
         <Link
-        target="_blank"
+          target="_blank"
           to={data.demo}
           className="flex gap-1 items-center underline hover:text-blue-600 hover:italic"
         >
           <ExternalLink size={16} />
-          Live demo{" "}
+          Live demo
         </Link>
       </div>
       <div className="">{data.detail}</div>
-    </RootLayout>
+    </>
+  ) : (
+    <div className="flex gap-2 flex-col">
+      <Skeleton className={"w-full sm:h-[30rem] h-44"} />
+      <Skeleton className={"w-80 sm:h-8 h-6"} />
+      <Skeleton className={"w-[60rem] h-4 sm:h-6"} />
+      <div className="flex gap-4">
+        <Skeleton className={"w-32 h-4 sm:h-6"} />
+        <Skeleton className={"w-32 h-4 sm:h-6"} />
+      </div>
+      <Skeleton className={"w-full h-[10rem]"} />
+    </div>
   );
 }

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AlignLeft, Moon, Sun } from "lucide-react";
 import { useState } from "react";
 import { Sidebar } from "./Sidebar";
@@ -13,6 +13,8 @@ import { links } from "@/data/links";
 export default function Navbar() {
   const { setTheme } = useTheme();
   const [show, setShow] = useState(false);
+  const { pathname } = useLocation();
+
   return (
     <div className="relative">
       <div className="shadow">
@@ -21,10 +23,21 @@ export default function Navbar() {
             onClick={() => setShow(!show)}
             className="cursor-pointer sm:hidden"
           />
-          <img className="h-8 fill-white" src={"/images/logo.png"} alt="" />
+          <h1 className="font-bold text-xl">Heri Riyanto</h1>
+          {/* <img className="h-8 fill-white" src={"/images/logo.png"} alt="" /> */}
           <div className="hidden sm:flex gap-8">
             {links.map((link, i) => (
-              <Link key={i} to={link.href} className="capitalize font-medium">
+              <Link
+                key={i}
+                to={link.href}
+                className={`capitalize font-medium ${
+                  pathname
+                    .split("/")
+                    .splice(1)
+                    .includes(link.href.split("/").at(1)) &&
+                  "text-primary font-bold underline underline-offset-[6px]"
+                }`}
+              >
                 {link.label}
               </Link>
             ))}
